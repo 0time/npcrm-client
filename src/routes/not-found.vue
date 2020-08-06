@@ -1,16 +1,12 @@
 <template>
   <div id="not-found">
-    <HelloWorld msg="Sorry, not sorry" />
+    <h1>"Sorry, not sorry"</h1>
   </div>
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
