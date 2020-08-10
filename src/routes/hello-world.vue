@@ -19,8 +19,10 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get(`${config.apiServer.uri}${config.apiServer.basePath}/hello-world`)
+    return axios({
+      method: 'get',
+      uri: `${config.apiServer.uri}${config.apiServer.basePath}/hello-world`,
+    })
       .then(response => (this.info.helloWorld = response.data.msg))
       .catch(error => (this.errored = true) && console.log(32, error)) // eslint-disable-line no-console
       .finally(() => (this.loading = false));

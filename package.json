@@ -15,7 +15,7 @@
   "private": false,
   "repository": "git@gitlab.com:0ti.me/npcrm-client",
   "dependencies": {
-    "@0ti.me/tiny-pfp": "^0.1.2",
+    "@0ti.me/tiny-pfp": "0.1.10",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"

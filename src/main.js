@@ -1,18 +1,24 @@
 import Vue from 'vue';
 
-import NotFound from './routes/not-found';
+import Customer from './routes/customer';
 import HelloWorld from './routes/hello-world';
+import NotFound from './routes/not-found';
 
 const Home = {
-  template: '<p><a href="/hello-world">Hello World</a></p>',
+  template:
+    ['hello-world', 'customer'].reduce(
+      (acc, ea) => `${acc}<p><a href="/${ea}">${ea}</a></p>`,
+      '<div>',
+    ) + '</div>',
 };
 
 const routes = {
   '/': Home,
   '/hello-world': HelloWorld,
+  '/customer': Customer,
 };
 
-new Vue({
+export default new Vue({
   el: '#app',
   data: {
     currentRoute: window.location.pathname,
