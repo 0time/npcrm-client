@@ -1,1 +1,5 @@
-export default (content) => console.error(content) || content;
+export default (content) => {
+  console.error(content);
+
+  return content;
+};
