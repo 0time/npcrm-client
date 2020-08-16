@@ -1,6 +1,6 @@
-export default (error) => {
+export default (context) => (error) => {
   if (error.response) {
-    console.error('Error response:', error.response);
+    context.logger.error('Error response:', error.response);
   }
 
   return Promise.reject(error);

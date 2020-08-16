@@ -1,5 +1,5 @@
-export default (content) => {
-  console.error(content);
+export default (context) => (content) => {
+  context.logger.info(content);
 
   return content;
 };

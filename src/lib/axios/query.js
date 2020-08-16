@@ -18,7 +18,10 @@ const instance = axios.create(
   ),
 );
 
-instance.interceptors.request.use(logAndReturn);
-instance.interceptors.response.use(response2XXHandler, responseErrorHandler);
+instance.interceptors.request.use(logAndReturn(context));
+instance.interceptors.response.use(
+  response2XXHandler(context),
+  responseErrorHandler(context),
+);
 
 export default (opts = {}) => instance(opts);

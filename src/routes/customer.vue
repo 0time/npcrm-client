@@ -7,6 +7,7 @@
 <script>
 import getCustomer from '../data/customer/get';
 import logAndReturn from '../lib/log-and-return';
+import context from '../app-context';
 
 export default ({
   name: 'Customers',
@@ -20,7 +21,7 @@ export default ({
   },
   mounted() {
     return getCustomer()
-      .then(logAndReturn)
+      .then(logAndReturn(context))
       .then(response => (this.info.customers = response.data))
       .catch(error => (this.errored = true) && console.log(32, error)) // eslint-disable-line no-console
       .finally(() => (this.loading = false));
