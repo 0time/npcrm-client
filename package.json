@@ -1,6 +1,6 @@
 {
   "name": "npcrm-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The client implementation of the npcrm project",
   "scripts": {
     "build": "vue-cli-service build",
