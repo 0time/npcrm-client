@@ -1,27 +1,13 @@
-const isCi = !!process.env.CI;
-const isTerm = !!process.env.TERM;
+const eslintRcJs = require('@0ti.me/test-deps/configuration-templates/eslintrc.js');
 
-module.exports = {
-  env: {
-    commonjs: true,
-    es6: true,
-    mocha: true,
-    node: true,
-  },
+module.exports = Object.assign({}, eslintRcJs, {
   extends: ['plugin:vue/essential', 'eslint:recommended', 'prettier'],
-  globals: {
-    deps: true,
-  },
-  parserOptions: {
-    // ecmaVersion: 2018,
-    parser: 'babel-eslint',
-  },
-  rules: {
-    'no-console': isCi ? 'error' : 'warn',
-  },
+  parserOptions: { parser: 'babel-eslint' },
   root: true,
-};
+});
 
-if (isTerm) {
-  console.error(module.exports);
+// This just prints everything if you execute this directly like so:
+//   node .eslintrc.js
+if (require.main === module) {
+  console.error(module.exports); // eslint-disable-line no-console
 }
