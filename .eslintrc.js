@@ -1,3 +1,6 @@
+const isCi = !!process.env.CI;
+const isTerm = !!process.env.TERM;
+
 module.exports = {
   env: {
     commonjs: true,
@@ -10,11 +13,15 @@ module.exports = {
     deps: true,
   },
   parserOptions: {
-    //ecmaVersion: 2018,
+    // ecmaVersion: 2018,
     parser: 'babel-eslint',
   },
   rules: {
-    'no-console': 'warn',
+    'no-console': isCi ? 'error' : 'warn',
   },
   root: true,
 };
+
+if (isTerm) {
+  console.error(module.exports);
+}
