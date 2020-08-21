@@ -1,10 +1,11 @@
 {
   "name": "npcrm-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The client implementation of the npcrm project",
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "NODE_ENV=production vue-cli-service lint",
+    "run-coveralls": "NODE_ENV=unit nyc report --reporter=text-lcov | coveralls",
     "serve": "vue-cli-service serve",
     "test": "yarn lint && yarn test:unit && yarn test:coveralls && yarn test:integration",
     "test:coveralls": "if-env-run CI yarn run-coveralls",
@@ -15,13 +16,13 @@
   "private": false,
   "repository": "git@gitlab.com:0ti.me/npcrm-client",
   "dependencies": {
-    "@0ti.me/tiny-pfp": "^0.1.2",
+    "@0ti.me/tiny-pfp": "0.1.10",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@0ti.me/test-deps": "^0.1.2",
+    "@0ti.me/test-deps": "0.1.19",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-service": "~4.4.0",

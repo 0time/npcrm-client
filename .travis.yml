@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- 10
+- 12
+- 13
+- 14
+jobs:
+  include:
+  - if: type = pull_request
+    node_js: 12
+    stage: expect_version_bump
+    script: yarn check-for-version-bump

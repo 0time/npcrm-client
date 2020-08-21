@@ -2,14 +2,30 @@
 // dependencies
 const merge = require('lodash.merge');
 
-const {NODE_ENV} = process.env;
+const { NODE_ENV } = process.env;
 
-if (!NODE_ENV) {
-  console.error(`NODE_ENV was unexpectedly ${NODE_ENV}`);
+const noop = () => undefined;
+
+let defaultConfig = {};
+let nodeEnvConfig = {};
+let localConfig = {};
+
+try {
+  defaultConfig = require('./default');
+} catch (err) {
+  noop();
 }
 
-const defaultConfig = require('./default');
-const nodeEnvConfig = require(`./${NODE_ENV}`);
-const localConfig = require('./local');
+try {
+  nodeEnvConfig = require(`./${NODE_ENV}`);
+} catch (err) {
+  noop();
+}
+
+try {
+  localConfig = require('./local');
+} catch (err) {
+  noop();
+}
 
 module.exports = merge({}, defaultConfig, nodeEnvConfig, localConfig);
